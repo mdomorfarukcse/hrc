@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our comprehensive range of services including travel tickets, passport services, visa assistance, notary services, and more at HRC Multi Services LLC.">
+    <meta name="keywords" content="travel services, passport renewal, visa services, notary public, airport assistance, UMRA packages">
+    <title>Our Services | HRC Multi Services LLC</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="header-main" id="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <span class="brand-text">HRC</span>
+                    <span class="brand-accent">MULTI SERVICES</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item ms-lg-3">
+                            <a class="btn btn-primary btn-nav-cta" href="tel:3134431453">
+                                <i class="fas fa-phone-alt me-2"></i>Call Now
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="page-title">Our Services</h1>
+                    <p class="page-subtitle">Comprehensive solutions for all your travel and documentation needs</p>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Services</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <!-- WordPress: WP_Query loop for custom post type 'services' -->
+    <section class="services-grid-section py-5">
+        <div class="container py-5">
+            <div class="row g-4">
+                <!-- Service 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-detailed">
+                        <div class="service-card-icon">
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <h3 class="service-card-title">Worldwide Travel Ticket</h3>
+                        <p class="service-card-description">Book affordable and convenient flight tickets to destinations around the globe. We offer competitive pricing, expert route planning, and personalized assistance to make your travel seamless.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check me-2"></i>Competitive airfare rates</li>
+                            <li><i class="fas fa-check me-2"></i>Expert route planning</li>
+                            <li><i class="fas fa-check me-2"></i>Multi-city bookings</li>
+                            <li><i class="fas fa-check me-2"></i>24/7 booking assistance</li>
+                        </ul>
+                        <a href="service-travel.html" class="btn btn-outline-primary w-100 mt-3">
+                            View Details <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-detailed">
+                        <div class="service-card-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3 class="service-card-title">No Visa Required (NVR)</h3>
+                        <p class="service-card-description">Travel to visa-free destinations hassle-free. We provide comprehensive guidance on documentation requirements, entry procedures, and travel planning for NVR destinations.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check me-2"></i>Destination guidance</li>
+                            <li><i class="fas fa-check me-2"></i>Documentation assistance</li>
+                            <li><i class="fas fa-check me-2"></i>Entry requirement updates</li>
+                            <li><i class="fas fa-check me-2"></i>Travel planning support</li>
+                        </ul>
+                        <a href="service-nvr.html" class="btn btn-outline-primary w-100 mt-3">
+                            View Details <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-detailed">
+                        <div class="service-card-icon">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                        <h3 class="service-card-title">New Passport & Renewal</h3>
+                        <p class="service-card-description">Expert assistance with new passport applications and renewals. We ensure accuracy, completeness, and timely processing of all your passport documentation needs.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check me-2"></i>Application guidance</li>
+                            <li><i class="fas fa-check me-2"></i>Document verification</li>
+                            <li><i class="fas fa-check me-2"></i>Fast processing options</li>
+                            <li><i class="fas fa-check me-2"></i>Renewal reminders</li>
+                        </ul>
+                        <a href="service-passport.html" class="btn btn-outline-primary w-100 mt-3">
+                            View Details <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-detailed">
+                        <div class="service-card-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3 class="service-card-title">Passport Photograph</h3>
+                        <p class="service-card-description">Professional passport photos meeting all official specifications and requirements. Quick service with guaranteed compliance to international standards.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check me-2"></i>Official specifications</li>
+                            <li><i class="fas fa-check me-2"></i>Professional quality</li>
+                            <li><i class="fas fa-check me-2"></i>Same-day service</li>
+                            <li><i class="fas fa-check me-2"></i>Digital & print copies</li>
+                        </ul>
+                        <a href="service-photo.html" class="btn btn-outline-primary w-100 mt-3">
+                            View Details <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-detailed">
+                        <div class="service-card-icon">
+                            <i class="fas fa-suitcase-rolling"></i>
+                        </div>
+                        <h3 class="service-card-title">Airport Services</h3>
+                        <p class="service-card-description">Comprehensive airport assistance including meet & greet, baggage help, wheelchair assistance, and complete travel coordination for a stress-free experience.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check me-2"></i>Meet & greet service</li>
+                            <li><i class="fas fa-check me-2"></i>Baggage assistance</li>
+                            <li><i class="fas fa-check me-2"></i>Wheelchair support</li>
+                            <li><i class="fas fa-check me-2"></i>Check-in coordination</li>
+                        </ul>
+                        <a href="service-airport.html" class="btn btn-outline-primary w-100 mt-3">
+                            View Details <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-detailed">
+                        <div class="service-card-icon">
+                            <i class="fas fa-kaaba"></i>
+                        </div>
+                        <h3 class="service-card-title">UMRA Visa, Hotel & Flights</h3>
+                        <p class="service-card-description">Complete UMRA packages including visa processing, hotel bookings, and flight arrangements. We handle all details for your spiritual journey with care and respect.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check me-2"></i>Visa processing</li>
+                            <li><i class="fas fa-check me-2"></i>Hotel near Haram</li>
+                            <li><i class="fas fa-check me-2"></i>Flight arrangements</li>
+                            <li><i class="fas fa-check me-2"></i>Group packages</li>
+                        </ul>
+                        <a href="service-umra.html" class="btn btn-outline-primary w-100 mt-3">
+                            View Details <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="col-lg-4 col-md-6 mx-auto" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-detailed">
+                        <div class="service-card-icon">
+                            <i class="fas fa-stamp"></i>
+                        </div>
+                        <h3 class="service-card-title">Notary Services</h3>
+                        <p class="service-card-description">Licensed notary public services for all your legal document authentication needs. Professional, reliable, and compliant with state regulations.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check me-2"></i>Document notarization</li>
+                            <li><i class="fas fa-check me-2"></i>Acknowledgments</li>
+                            <li><i class="fas fa-check me-2"></i>Oath administration</li>
+                            <li><i class="fas fa-check me-2"></i>Mobile notary available</li>
+                        </ul>
+                        <a href="service-notary.html" class="btn btn-outline-primary w-100 mt-3">
+                            View Details <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section bg-light py-5">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <span class="section-tag">How It Works</span>
+                    <h2 class="section-title mb-3">Simple & Straightforward Process</h2>
+                    <p class="section-description">Getting started with our services is easy. Follow these simple steps.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-card">
+                        <div class="process-number">01</div>
+                        <h3 class="process-title">Contact Us</h3>
+                        <p class="process-text">Reach out via phone, email, or visit our office to discuss your needs.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-card">
+                        <div class="process-number">02</div>
+                        <h3 class="process-title">Consultation</h3>
+                        <p class="process-text">Our experts will guide you through requirements and options available.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-card">
+                        <div class="process-number">03</div>
+                        <h3 class="process-title">Processing</h3>
+                        <p class="process-text">We handle all paperwork and coordination efficiently and accurately.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="process-card">
+                        <div class="process-number">04</div>
+                        <h3 class="process-title">Completion</h3>
+                        <p class="process-text">Receive your documents or travel plans ready for your journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="cta-box text-center" data-aos="zoom-in">
+                        <h2 class="cta-title mb-4">Need Assistance with Your Travel Plans?</h2>
+                        <p class="cta-text mb-5">Our team of experts is ready to help you with any service you need. Contact us today to get started.</p>
+                        <div class="cta-buttons">
+                            <a href="contact.html" class="btn btn-light btn-lg me-3 mb-3">
+                                <i class="fas fa-envelope me-2"></i>Contact Us
+                            </a>
+                            <a href="tel:3134431453" class="btn btn-outline-light btn-lg mb-3">
+                                <i class="fas fa-phone-alt me-2"></i>313-443-1453
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white pt-5">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="footer-brand mb-4">HRC MULTI SERVICES</h3>
+                    <p class="footer-text mb-4">Your trusted partner for travel, documentation, and professional services.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-heading mb-4">Quick Links</h4>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-heading mb-4">Our Services</h4>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="service-travel.html">Travel Tickets</a></li>
+                        <li><a href="service-passport.html">Passport Services</a></li>
+                        <li><a href="service-umra.html">UMRA Packages</a></li>
+                        <li><a href="service-notary.html">Notary Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-heading mb-4">Contact Us</h4>
+                    <ul class="footer-contact list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            <span>3792 Nolan Dr<br>Sterling Heights, MI 483**</span>
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            <a href="tel:3134431453">313-443-1453</a>
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            <a href="tel:8323598909">832-359-8909</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@hrcmultiservices.com">info@hrcmultiservices.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom py-4 border-top border-secondary">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <p class="mb-0">&copy; 2024 HRC Multi Services LLC. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="footer-bottom-link me-3">Privacy Policy</a>
+                        <a href="#" class="footer-bottom-link">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
