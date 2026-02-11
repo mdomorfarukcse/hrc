@@ -21,11 +21,11 @@ get_header();
                         <?php echo esc_html( hrc_get_option( 'hero_subtitle', 'From passport renewals to worldwide travel tickets, we provide comprehensive services with professionalism, care, and expertise you can trust.' ) ); ?>
                     </p>
                     <div class="hero-cta" data-aos="fade-up" data-aos-delay="200">
-                        <a href="<?php echo esc_url( hrc_get_option( 'hero_btn1_url', '/services/' ) ); ?>" class="btn btn-primary btn-lg me-3 mb-3">
-                            <i class="fas fa-briefcase me-2"></i><?php echo esc_html( hrc_get_option( 'hero_btn1_text', 'Explore Services' ) ); ?>
+                        <a href="<?php echo esc_url( hrc_get_option( 'hero_btn1_url', '/services/' ) ); ?>" class="btn btn-gradient btn-lg me-3 mb-3">
+                            <i class="fas fa-paper-plane me-2"></i><?php echo esc_html( hrc_get_option( 'hero_btn1_text', 'Explore Services' ) ); ?>
                         </a>
-                        <a href="<?php echo esc_url( hrc_get_option( 'hero_btn2_url', '/contact/' ) ); ?>" class="btn btn-outline-light btn-lg mb-3">
-                            <i class="fas fa-envelope me-2"></i><?php echo esc_html( hrc_get_option( 'hero_btn2_text', 'Get in Touch' ) ); ?>
+                        <a href="<?php echo esc_url( hrc_get_option( 'hero_btn2_url', '/contact/' ) ); ?>" class="btn btn-light btn-lg mb-3">
+                            <i class="fas fa-phone-alt me-2"></i><?php echo esc_html( hrc_get_option( 'hero_btn2_text', 'Contact Us' ) ); ?>
                         </a>
                     </div>
 

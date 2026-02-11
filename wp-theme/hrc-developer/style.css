@@ -17,20 +17,23 @@ Requires PHP: 7.4
 /*
 =====================================================
 HRC MULTI SERVICES LLC - Custom Stylesheet
-Modern, Professional, Bangladeshi-Inspired Design
+Modern, Professional, Crimson & Navy Gradient Design
 WordPress Theme with Redux Framework
 =====================================================
 */
 
 /* ==================== ROOT VARIABLES ==================== */
 :root {
-    /* Brand Colors - Bangladeshi-Inspired Palette */
-    --primary-green: #0F5132;
-    --primary-green-light: #1a7044;
-    --primary-green-dark: #0a3d25;
+    /* Brand Colors - Crimson & Navy Gradient Palette */
+    --primary-green: #9B1D34;
+    --primary-green-light: #B52545;
+    --primary-green-dark: #1E3066;
     --accent-gold: #D4AF37;
     --accent-gold-light: #e0c055;
     --accent-gold-dark: #b89225;
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #9B1D34 0%, #1E3066 100%);
 
     /* Neutral Colors */
     --white: #FFFFFF;
@@ -349,7 +352,7 @@ a:hover {
 .stat-number {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 700;
-    color: var(--accent-gold);
+    color: var(--white);
     margin-bottom: 0.5rem;
     display: block;
 }
@@ -376,6 +379,23 @@ a:hover {
 .section-title {
     color: var(--text-dark);
     margin-bottom: var(--spacing-md);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+    margin-top: 0.75rem;
+    border-radius: 2px;
+}
+
+.text-center .section-title::after {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-description {
@@ -407,7 +427,7 @@ a:hover {
 .service-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border-radius: var(--radius-lg);
     display: flex;
@@ -470,7 +490,7 @@ a:hover {
 .service-card-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border-radius: var(--radius-xl);
     display: flex;
@@ -524,7 +544,7 @@ a:hover {
 .feature-icon-box {
     width: 40px;
     height: 40px;
-    background-color: var(--primary-green);
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border-radius: 50%;
     display: flex;
@@ -538,7 +558,7 @@ a:hover {
 .feature-icon {
     width: 40px;
     height: 40px;
-    background-color: var(--primary-green);
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border-radius: 50%;
     display: flex;
@@ -578,7 +598,7 @@ a:hover {
     position: absolute;
     bottom: 30px;
     left: 30px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-lg);
@@ -634,7 +654,7 @@ a:hover {
 
 /* ==================== FOOTER ==================== */
 .footer {
-    background-color: #0a2818;
+    background-color: #0E1B3D;
 }
 
 .footer-brand {
@@ -820,7 +840,7 @@ a:hover {
 .value-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border-radius: var(--radius-xl);
     display: flex;
@@ -930,7 +950,7 @@ a:hover {
 .process-number {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border-radius: 50%;
     display: flex;
@@ -1070,7 +1090,7 @@ a:hover {
 .step-number {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border-radius: 50%;
     display: flex;
@@ -1106,7 +1126,7 @@ a:hover {
 }
 
 .sidebar-card.contact-card {
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border: none;
 }
@@ -1206,7 +1226,7 @@ a:hover {
 .contact-info-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border-radius: var(--radius-md);
     display: flex;
@@ -1256,7 +1276,7 @@ a:hover {
 .contact-form .form-control:focus,
 .contact-form .form-select:focus {
     border-color: var(--primary-green);
-    box-shadow: 0 0 0 0.2rem rgba(15, 81, 50, 0.15);
+    box-shadow: 0 0 0 0.2rem rgba(155, 29, 52, 0.15);
 }
 
 .map-container iframe {
@@ -1271,7 +1291,7 @@ a:hover {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
     color: var(--white);
     border: none;
     border-radius: 50%;
@@ -1442,6 +1462,89 @@ a:hover {
 
 [data-aos="zoom-in"].aos-animate {
     transform: scale(1);
+}
+
+/* ==================== GRADIENT BUTTON ==================== */
+.btn-gradient {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+    color: var(--white);
+    border: none;
+    box-shadow: var(--shadow-md);
+    border-radius: 50px;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, var(--primary-green-light) 0%, var(--primary-green-dark) 100%);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==================== HERO BUTTON OVERRIDES ==================== */
+.hero-section .btn {
+    border-radius: 50px;
+}
+
+.hero-section .btn-light,
+.hero-section .btn-outline-light {
+    background-color: var(--white);
+    color: var(--primary-green);
+    border-color: var(--white);
+}
+
+.hero-section .btn-light:hover,
+.hero-section .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-green-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==================== CTA BUTTON OVERRIDES ==================== */
+.cta-section .btn-light {
+    color: var(--primary-green);
+    border-radius: 50px;
+}
+
+.cta-section .btn-light:hover {
+    color: var(--primary-green-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-section .btn-outline-light {
+    border-radius: 50px;
+}
+
+/* ==================== STATS SECTION (About Page) ==================== */
+.stats-section {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><circle cx="200" cy="400" r="300" fill="rgba(255,255,255,0.03)"/><circle cx="1000" cy="400" r="400" fill="rgba(255,255,255,0.03)"/></svg>');
+    background-size: cover;
+}
+
+.stats-section .stat-box {
+    position: relative;
+    z-index: 2;
+}
+
+/* ==================== GRADIENT ICON UTILITIES ==================== */
+.icon-gradient {
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* ==================== PRINT STYLES ==================== */
