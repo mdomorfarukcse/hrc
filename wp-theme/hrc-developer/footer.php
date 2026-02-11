@@ -29,7 +29,18 @@ $linkedin       = hrc_get_option( 'social_linkedin', '#' );
             <div class="row g-4">
                 <!-- Company Info -->
                 <div class="col-lg-4 col-md-6">
-                    <h3 class="footer-brand mb-4"><?php echo esc_html( hrc_get_option( 'brand_name', 'HRC' ) . ' ' . hrc_get_option( 'brand_accent', 'MULTI SERVICES' ) ); ?></h3>
+                    <?php
+                    $footer_logo = hrc_get_option( 'site_logo' );
+                    $footer_logo_url = ! empty( $footer_logo['url'] ) ? $footer_logo['url'] : '';
+                    if ( $footer_logo_url ) : ?>
+                        <div class="footer-brand mb-4">
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                                <img src="<?php echo esc_url( $footer_logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="img-fluid" style="max-height: 60px;">
+                            </a>
+                        </div>
+                    <?php else : ?>
+                        <h3 class="footer-brand mb-4"><?php echo esc_html( hrc_get_option( 'brand_name', 'HRC' ) . ' ' . hrc_get_option( 'brand_accent', 'MULTI SERVICES' ) ); ?></h3>
+                    <?php endif; ?>
                     <p class="footer-text mb-4"><?php echo esc_html( $footer_desc ); ?></p>
                     <div class="social-links">
                         <?php if ( $facebook ) : ?>

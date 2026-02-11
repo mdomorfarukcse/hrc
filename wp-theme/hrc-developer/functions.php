@@ -374,6 +374,78 @@ function hrc_get_option( $option, $default = '' ) {
 }
 
 /**
+ * Dynamic CSS: Output Redux color options as CSS variables
+ * This overrides the :root defaults in style.css with user-chosen colors
+ */
+function hrc_dynamic_css() {
+    $primary_color   = hrc_get_option( 'primary_color', '#9B1D34' );
+    $gradient_end    = hrc_get_option( 'gradient_end_color', '#1E3066' );
+    $accent_color    = hrc_get_option( 'accent_color', '#D4AF37' );
+    $header_bg       = hrc_get_option( 'header_bg_color', '#FFFFFF' );
+    $footer_bg       = hrc_get_option( 'footer_bg_color', '#0E1B3D' );
+
+    // Compute lighter variant of primary color for hover states
+    $primary_light = hrc_lighten_color( $primary_color, 15 );
+    // Compute lighter variants of accent
+    $accent_light  = hrc_lighten_color( $accent_color, 15 );
+    $accent_dark   = hrc_darken_color( $accent_color, 15 );
+
+    $css = ":root {
+        --primary-green: {$primary_color};
+        --primary-green-light: {$primary_light};
+        --primary-green-dark: {$gradient_end};
+        --accent-gold: {$accent_color};
+        --accent-gold-light: {$accent_light};
+        --accent-gold-dark: {$accent_dark};
+        --gradient-primary: linear-gradient(135deg, {$primary_color} 0%, {$gradient_end} 100%);
+    }
+    .footer { background-color: {$footer_bg} !important; }
+    .navbar { background-color: {$header_bg} !important; }
+    ";
+
+    wp_add_inline_style( 'hrc-theme-style', $css );
+}
+add_action( 'wp_enqueue_scripts', 'hrc_dynamic_css', 20 );
+
+/**
+ * Helper: Lighten a hex color by a percentage
+ */
+function hrc_lighten_color( $hex, $percent ) {
+    $hex = ltrim( $hex, '#' );
+    if ( strlen( $hex ) === 3 ) {
+        $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+    }
+    $r = hexdec( substr( $hex, 0, 2 ) );
+    $g = hexdec( substr( $hex, 2, 2 ) );
+    $b = hexdec( substr( $hex, 4, 2 ) );
+
+    $r = min( 255, $r + round( ( 255 - $r ) * $percent / 100 ) );
+    $g = min( 255, $g + round( ( 255 - $g ) * $percent / 100 ) );
+    $b = min( 255, $b + round( ( 255 - $b ) * $percent / 100 ) );
+
+    return sprintf( '#%02x%02x%02x', $r, $g, $b );
+}
+
+/**
+ * Helper: Darken a hex color by a percentage
+ */
+function hrc_darken_color( $hex, $percent ) {
+    $hex = ltrim( $hex, '#' );
+    if ( strlen( $hex ) === 3 ) {
+        $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+    }
+    $r = hexdec( substr( $hex, 0, 2 ) );
+    $g = hexdec( substr( $hex, 2, 2 ) );
+    $b = hexdec( substr( $hex, 4, 2 ) );
+
+    $r = max( 0, $r - round( $r * $percent / 100 ) );
+    $g = max( 0, $g - round( $g * $percent / 100 ) );
+    $b = max( 0, $b - round( $b * $percent / 100 ) );
+
+    return sprintf( '#%02x%02x%02x', $r, $g, $b );
+}
+
+/**
  * Contact Form AJAX Handler
  */
 function hrc_handle_contact_form() {

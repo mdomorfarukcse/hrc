@@ -25,10 +25,18 @@ if ( ! defined( 'ABSPATH' ) ) {
         <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
             <div class="container">
                 <!-- Logo -->
-                <?php if ( has_custom_logo() ) : ?>
+                <?php
+                $redux_logo = hrc_get_option( 'site_logo' );
+                $redux_logo_url = ! empty( $redux_logo['url'] ) ? $redux_logo['url'] : '';
+
+                if ( has_custom_logo() ) : ?>
                     <div class="navbar-brand">
                         <?php the_custom_logo(); ?>
                     </div>
+                <?php elseif ( $redux_logo_url ) : ?>
+                    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <img src="<?php echo esc_url( $redux_logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="img-fluid" style="max-height: 60px;">
+                    </a>
                 <?php else : ?>
                     <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                         <span class="brand-text"><?php echo esc_html( hrc_get_option( 'brand_name', 'HRC' ) ); ?></span>
