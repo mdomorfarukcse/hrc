@@ -190,7 +190,7 @@ get_header();
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section bg-primary text-white py-5">
+    <section class="stats-section text-white py-5">
         <div class="container py-5">
             <div class="row g-4 text-center">
                 <?php

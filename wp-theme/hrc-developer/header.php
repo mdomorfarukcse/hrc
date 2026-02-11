@@ -78,7 +78,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         $phone_clean = preg_replace( '/[^0-9]/', '', $header_phone );
                     ?>
                         <div class="ms-lg-3">
-                            <a class="btn btn-primary btn-nav-cta" href="tel:<?php echo esc_attr( $phone_clean ); ?>">
+                            <a class="btn btn-gradient btn-nav-cta" href="tel:<?php echo esc_attr( $phone_clean ); ?>">
                                 <i class="fas fa-phone-alt me-2"></i><?php esc_html_e( 'Call Now', 'hrc-developer' ); ?>
                             </a>
                         </div>
