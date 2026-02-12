@@ -1019,7 +1019,7 @@ a:hover {
 }
 
 .sidebar-card.contact-card {
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light);
+    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
     color: var(--white);
     border: none;
 }
