@@ -252,6 +252,140 @@ function hrc_save_service_details( $post_id ) {
 add_action( 'save_post_service', 'hrc_save_service_details' );
 
 /**
+ * Register "What We Offer" & "Package Include" Meta Boxes for Services
+ */
+function hrc_register_service_extra_meta_boxes() {
+    add_meta_box(
+        'hrc_service_what_we_offer',
+        esc_html__( 'What We Offer (4 Items)', 'hrc-developer' ),
+        'hrc_what_we_offer_callback',
+        'service',
+        'normal',
+        'default'
+    );
+
+    add_meta_box(
+        'hrc_service_package_include',
+        esc_html__( 'Package Include (Repeatable Items)', 'hrc-developer' ),
+        'hrc_package_include_callback',
+        'service',
+        'normal',
+        'default'
+    );
+}
+add_action( 'add_meta_boxes', 'hrc_register_service_extra_meta_boxes' );
+
+function hrc_what_we_offer_callback( $post ) {
+    wp_nonce_field( 'hrc_what_we_offer', 'hrc_what_we_offer_nonce' );
+
+    $offers = get_post_meta( $post->ID, '_hrc_what_we_offer', true );
+    if ( empty( $offers ) || ! is_array( $offers ) ) {
+        $offers = array(
+            array( 'icon' => '', 'title' => '', 'description' => '' ),
+            array( 'icon' => '', 'title' => '', 'description' => '' ),
+            array( 'icon' => '', 'title' => '', 'description' => '' ),
+            array( 'icon' => '', 'title' => '', 'description' => '' ),
+        );
+    }
+    ?>
+    <p class="description"><?php esc_html_e( 'Add 4 items to display in the "What We Offer" section on this service page.', 'hrc-developer' ); ?></p>
+    <table class="form-table">
+        <?php for ( $i = 0; $i < 4; $i++ ) :
+            $icon = isset( $offers[ $i ]['icon'] ) ? $offers[ $i ]['icon'] : '';
+            $title = isset( $offers[ $i ]['title'] ) ? $offers[ $i ]['title'] : '';
+            $desc = isset( $offers[ $i ]['description'] ) ? $offers[ $i ]['description'] : '';
+        ?>
+        <tr>
+            <th><?php printf( esc_html__( 'Item %d', 'hrc-developer' ), $i + 1 ); ?></th>
+            <td>
+                <p>
+                    <label><?php esc_html_e( 'Icon Class:', 'hrc-developer' ); ?></label><br>
+                    <input type="text" name="hrc_offer[<?php echo esc_attr( $i ); ?>][icon]" value="<?php echo esc_attr( $icon ); ?>" class="regular-text" placeholder="fas fa-check-circle" />
+                </p>
+                <p>
+                    <label><?php esc_html_e( 'Title:', 'hrc-developer' ); ?></label><br>
+                    <input type="text" name="hrc_offer[<?php echo esc_attr( $i ); ?>][title]" value="<?php echo esc_attr( $title ); ?>" class="regular-text" />
+                </p>
+                <p>
+                    <label><?php esc_html_e( 'Description:', 'hrc-developer' ); ?></label><br>
+                    <textarea name="hrc_offer[<?php echo esc_attr( $i ); ?>][description]" rows="2" class="large-text"><?php echo esc_textarea( $desc ); ?></textarea>
+                </p>
+            </td>
+        </tr>
+        <?php endfor; ?>
+    </table>
+    <?php
+}
+
+function hrc_package_include_callback( $post ) {
+    wp_nonce_field( 'hrc_package_include', 'hrc_package_include_nonce' );
+
+    $packages = get_post_meta( $post->ID, '_hrc_package_include', true );
+    if ( empty( $packages ) || ! is_array( $packages ) ) {
+        $packages = array( '' );
+    }
+    ?>
+    <p class="description"><?php esc_html_e( 'Add items that are included in this service package. You can add as many as needed.', 'hrc-developer' ); ?></p>
+    <div id="hrc-package-items">
+        <?php foreach ( $packages as $index => $item ) : ?>
+            <div class="hrc-package-item" style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                <input type="text" name="hrc_package[]" value="<?php echo esc_attr( $item ); ?>" class="regular-text" placeholder="<?php esc_attr_e( 'Package item...', 'hrc-developer' ); ?>" />
+                <button type="button" class="button hrc-remove-package" onclick="this.parentElement.remove();"><?php esc_html_e( 'Remove', 'hrc-developer' ); ?></button>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <p>
+        <button type="button" class="button button-primary" id="hrc-add-package"><?php esc_html_e( 'Add Item', 'hrc-developer' ); ?></button>
+    </p>
+    <script>
+        document.getElementById('hrc-add-package').addEventListener('click', function() {
+            var container = document.getElementById('hrc-package-items');
+            var div = document.createElement('div');
+            div.className = 'hrc-package-item';
+            div.style.cssText = 'margin-bottom: 8px; display: flex; align-items: center; gap: 8px;';
+            div.innerHTML = '<input type="text" name="hrc_package[]" value="" class="regular-text" placeholder="<?php echo esc_attr__( 'Package item...', 'hrc-developer' ); ?>" />' +
+                '<button type="button" class="button hrc-remove-package" onclick="this.parentElement.remove();"><?php echo esc_html__( 'Remove', 'hrc-developer' ); ?></button>';
+            container.appendChild(div);
+        });
+    </script>
+    <?php
+}
+
+function hrc_save_service_extra_meta( $post_id ) {
+    // Save What We Offer
+    if ( isset( $_POST['hrc_what_we_offer_nonce'] ) &&
+         wp_verify_nonce( $_POST['hrc_what_we_offer_nonce'], 'hrc_what_we_offer' ) ) {
+
+        if ( ! defined( 'DOING_AUTOSAVE' ) || ! DOING_AUTOSAVE ) {
+            if ( current_user_can( 'edit_post', $post_id ) && isset( $_POST['hrc_offer'] ) ) {
+                $offers = array();
+                foreach ( $_POST['hrc_offer'] as $offer ) {
+                    $offers[] = array(
+                        'icon'        => sanitize_text_field( $offer['icon'] ?? '' ),
+                        'title'       => sanitize_text_field( $offer['title'] ?? '' ),
+                        'description' => sanitize_textarea_field( $offer['description'] ?? '' ),
+                    );
+                }
+                update_post_meta( $post_id, '_hrc_what_we_offer', $offers );
+            }
+        }
+    }
+
+    // Save Package Include
+    if ( isset( $_POST['hrc_package_include_nonce'] ) &&
+         wp_verify_nonce( $_POST['hrc_package_include_nonce'], 'hrc_package_include' ) ) {
+
+        if ( ! defined( 'DOING_AUTOSAVE' ) || ! DOING_AUTOSAVE ) {
+            if ( current_user_can( 'edit_post', $post_id ) && isset( $_POST['hrc_package'] ) ) {
+                $packages = array_filter( array_map( 'sanitize_text_field', $_POST['hrc_package'] ) );
+                update_post_meta( $post_id, '_hrc_package_include', array_values( $packages ) );
+            }
+        }
+    }
+}
+add_action( 'save_post_service', 'hrc_save_service_extra_meta' );
+
+/**
  * Register Widget Areas
  */
 function hrc_widgets_init() {

@@ -14,7 +14,9 @@
         initBackToTop();
         initAOS();
         initContactForm();
+        initServiceContactForm();
         initSmoothScroll();
+        initParallax();
     });
 
     // ==================== NAVIGATION ====================
@@ -167,6 +169,98 @@
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalText;
             }
+        });
+    }
+
+    // ==================== SERVICE PAGE CONTACT FORM ====================
+
+    function initServiceContactForm() {
+        var serviceForm = document.getElementById('serviceContactForm');
+
+        if (!serviceForm) return;
+
+        serviceForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var formData = {
+                firstName: document.getElementById('svcFirstName').value,
+                lastName: document.getElementById('svcLastName').value,
+                email: document.getElementById('svcEmail').value,
+                phone: document.getElementById('svcPhone').value,
+                service: document.getElementById('svcService') ? document.getElementById('svcService').value : '',
+                message: document.getElementById('svcMessage').value
+            };
+
+            // Basic validation
+            if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.message) {
+                showNotification('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            if (!isValidEmail(formData.email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            var submitBtn = serviceForm.querySelector('button[type="submit"]');
+            var originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+
+            if (typeof hrc_ajax !== 'undefined') {
+                var params = new URLSearchParams({
+                    action: 'hrc_contact_form',
+                    nonce: hrc_ajax.nonce,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    service: formData.service,
+                    message: formData.message
+                });
+
+                fetch(hrc_ajax.ajax_url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: params.toString()
+                })
+                .then(function(response) { return response.json(); })
+                .then(function(data) {
+                    if (data.success) {
+                        showNotification(data.data.message, 'success');
+                        serviceForm.reset();
+                    } else {
+                        showNotification(data.data.message || 'Error sending message. Please try again.', 'error');
+                    }
+                })
+                .catch(function() {
+                    showNotification('Error sending message. Please try again.', 'error');
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                });
+            } else {
+                showNotification('Thank you for your inquiry! We will get back to you soon.', 'success');
+                serviceForm.reset();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+        });
+    }
+
+    // ==================== PARALLAX EFFECT ====================
+
+    function initParallax() {
+        var heroSection = document.querySelector('.hero-section');
+        if (!heroSection) return;
+
+        window.addEventListener('scroll', function() {
+            var scrolled = window.scrollY;
+            var rate = scrolled * 0.4;
+            heroSection.style.backgroundPositionY = rate + 'px';
         });
     }
 
